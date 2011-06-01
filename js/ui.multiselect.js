@@ -57,9 +57,9 @@ $.widget("ui.multiselect", {
 		var that = this;
 
 		// set dimensions
-		this.container.width(this.element.width()+1);
-		this.selectedContainer.width(Math.floor(this.element.width()*this.options.dividerLocation));
-		this.availableContainer.width(Math.floor(this.element.width()*(1-this.options.dividerLocation)));
+		this.container.width('100%');
+		this.selectedContainer.width(Math.floor(100*this.options.dividerLocation)+'%');
+		this.availableContainer.width(Math.floor(100*(1-this.options.dividerLocation))+'%');
 
 		// fix list height to match <option> depending on their individual header's heights
 		this.selectedList.height(Math.max(this.element.height()-this.selectedActions.height(),1));
@@ -285,8 +285,8 @@ $.widget("ui.multiselect", {
   			$(this).parent().draggable({
   	      connectToSortable: that.selectedList,
   				helper: function() {
-  					var selectedItem = that._cloneWithData($(this)).width($(this).width() - 50);
-  					selectedItem.width($(this).width());
+  					var selectedItem = that._cloneWithData($(this));
+  					selectedItem.width('100%');
   					return selectedItem;
   				},
   				appendTo: that.container,
